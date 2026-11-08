@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work Shifts in Nepal</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #ffffff; --text: #1d1d1f; --muted: #6b6b70;
+    --line: #e4e2dd; --accent: #c8102e; --accent-soft: #fbe9ec;
+    --us: #1f4e9c; --np: #c8102e; --next: #fff5d6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416; --card: #1d1d20; --text: #ececf0; --muted: #9a9aa2;
+      --line: #2e2e33; --accent: #ff5a6e; --accent-soft: #3a1d22;
+      --us: #7fa8ff; --np: #ff7a8a; --next: #3a3220;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.7rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .summary {
+    display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    margin-bottom: 24px;
+  }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .box .label { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .box .big { font-size: 1.25rem; font-weight: 650; margin-top: 4px; }
+  .box .small { color: var(--muted); font-size: .9rem; }
+  .us { color: var(--us); } .np { color: var(--np); }
+  #nextShift { border-color: var(--accent); background: var(--accent-soft); }
+  h2 { font-size: 1.2rem; margin: 32px 0 10px; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: transparent; }
+  tr:last-child td { border-bottom: none; }
+  tr.past td { opacity: .45; }
+  tr.next td { background: var(--next); }
+  .day { font-weight: 600; }
+  .note { color: var(--muted); font-size: .88rem; margin-top: 24px; }
+  .clock { font-variant-numeric: tabular-nums; }
+  @media (max-width: 560px) {
+    thead { display: none; }
+    table, tbody, tr, td { display: block; width: 100%; }
+    tr { border-bottom: 1px solid var(--line); padding: 8px 0; }
+    td { border: none; padding: 4px 12px; }
+    td::before { content: attr(data-l); display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Work schedule: Ruston, LA → Kathmandu, Nepal</h1>
+  <p class="sub">Tuesday, Thursday &amp; Friday shifts, 8:00 AM – 5:00 PM US Central Time, shown in Nepal time for November &amp; December.</p>
+
+  <div class="summary">
+    <div class="box">
+      <div class="label">Shift in USA (Ruston)</div>
+      <div class="big us">8:00 AM – 5:00 PM</div>
+      <div class="small">Central Standard Time (CST, UTC−6)</div>
+    </div>
+    <div class="box">
+      <div class="label">Same shift in Nepal</div>
+      <div class="big np">7:45 PM – 4:45 AM</div>
+      <div class="small">Starts same evening, ends next morning (NPT, UTC+5:45)</div>
+    </div>
+    <div class="box">
+      <div class="label">Your Nepal work nights</div>
+      <div class="big">Tue · Thu · Fri</div>
+      <div class="small">Evening start, finishing Wed · Fri · Sat morning</div>
+    </div>
+  </div>
+
+  <div class="box" id="nextShift">
+    <div class="label">Now in Kathmandu</div>
+    <div class="big clock" id="nowNp">–</div>
+    <div class="small clock" id="nowUs">–</div>
+    <div class="small" id="nextText" style="margin-top:8px;color:var(--text)"></div>
+  </div>
+
+  <div id="tables"></div>
+
+  <p class="note">
+    Nepal is 11 hours 45 minutes ahead of Ruston during November and December (US daylight saving
+    time ended Nov 1, 2026; Nepal does not change its clocks). Times are calculated from official time zone
+    data in your browser, so they stay correct even if the dates change.
+  </p>
+</div>
+
+<script>
+const US_TZ = "America/Chicago";
+const NP_TZ = "Asia/Kathmandu";
+const YEAR = 2026;
+const WORK_DAYS = [2, 4, 5]; // Tue, Thu, Fri
+
+// Get the UTC instant for a wall-clock time in a given time zone.
+function zonedToUtc(y, m, d, h, min, tz) {
+  let guess = Date.UTC(y, m, d, h, min);
+  for (let i = 0; i < 2; i++) {
+    const p = parts(new Date(guess), tz);
+    const asUtc = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute);
+    guess += Date.UTC(y, m, d, h, min) - asUtc;
+  }
+  return new Date(guess);
+}
+function parts(date, tz) {
+  const o = {};
+  new Intl.DateTimeFormat("en-US", {
+    timeZone: tz, year: "numeric", month: "numeric", day: "numeric",
+    hour: "numeric", minute: "numeric", hourCycle: "h23"
+  }).formatToParts(date).forEach(p => { if (p.type !== "literal") o[p.type] = +p.value; });
+  return o;
+}
+const fmtDate = (d, tz) => d.toLocaleDateString("en-US", { timeZone: tz, weekday: "short", month: "short", day: "numeric" });
+const fmtTime = (d, tz) => d.toLocaleTimeString("en-US", { timeZone: tz, hour: "numeric", minute: "2-digit" });
+
+const shifts = [];
+const container = document.getElementById("tables");
+[10, 11].forEach(month => {
+  const name = new Date(Date.UTC(YEAR, month, 15)).toLocaleDateString("en-US", { month: "long", timeZone: "UTC" });
+  const rows = [];
+  const days = new Date(Date.UTC(YEAR, month + 1, 0)).getUTCDate();
+  for (let d = 1; d <= days; d++) {
+    const wd = new Date(Date.UTC(YEAR, month, d)).getUTCDay();
+    if (!WORK_DAYS.includes(wd)) continue;
+    const start = zonedToUtc(YEAR, month, d, 8, 0, US_TZ);
+    const end = zonedToUtc(YEAR, month, d, 17, 0, US_TZ);
+    const s = { start, end };
+    shifts.push(s);
+    rows.push(s);
+  }
+  const h = document.createElement("h2");
+  h.textContent = `${name} ${YEAR}`;
+  container.appendChild(h);
+  const t = document.createElement("table");
+  t.innerHTML = `<thead><tr>
+      <th>USA (Ruston) day</th><th>USA time</th><th>Nepal start</th><th>Nepal end</th>
+    </tr></thead>`;
+  const tb = document.createElement("tbody");
+  rows.forEach(s => {
+    const tr = document.createElement("tr");
+    s.row = tr;
+    tr.innerHTML = `
+      <td data-l="USA (Ruston) day" class="day us">${fmtDate(s.start, US_TZ)}</td>
+      <td data-l="USA time">${fmtTime(s.start, US_TZ)} – ${fmtTime(s.end, US_TZ)}</td>
+      <td data-l="Nepal start"><span class="day np">${fmtDate(s.start, NP_TZ)}</span><br>${fmtTime(s.start, NP_TZ)}</td>
+      <td data-l="Nepal end"><span class="day np">${fmtDate(s.end, NP_TZ)}</span><br>${fmtTime(s.end, NP_TZ)}</td>`;
+    tb.appendChild(tr);
+  });
+  t.appendChild(tb);
+  container.appendChild(t);
+});
+
+function tick() {
+  const now = new Date();
+  document.getElementById("nowNp").textContent =
+    now.toLocaleString("en-US", { timeZone: NP_TZ, weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  document.getElementById("nowUs").textContent =
+    "Ruston: " + now.toLocaleString("en-US", { timeZone: US_TZ, weekday: "long", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  let shown = false;
+  shifts.forEach(s => {
+    s.row.classList.remove("past", "next");
+    if (s.end <= now) s.row.classList.add("past");
+    else if (!shown) {
+      s.row.classList.add("next");
+      shown = true;
+      const txt = document.getElementById("nextText");
+      if (s.start <= now) {
+        const mins = Math.round((s.end - now) / 60000);
+        txt.innerHTML = `<strong>You're working now.</strong> Shift ends at ${fmtTime(s.end, NP_TZ)} Nepal time (${Math.floor(mins / 60)}h ${mins % 60}m left).`;
+      } else {
+        const mins = Math.round((s.start - now) / 60000);
+        const dd = Math.floor(mins / 1440), hh = Math.floor((mins % 1440) / 60), mm = mins % 60;
+        txt.innerHTML = `<strong>Next shift:</strong> ${fmtDate(s.start, NP_TZ)}, ${fmtTime(s.start, NP_TZ)} Nepal time — in ${dd ? dd + "d " : ""}${hh}h ${mm}m.`;
+      }
+    }
+  });
+  if (!shown) document.getElementById("nextText").textContent = "All November & December shifts are done.";
+}
+tick();
+setInterval(tick, 30000);
+</script>
+</body>
+</html>
