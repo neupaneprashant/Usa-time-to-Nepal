@@ -353,7 +353,8 @@
           <span>Add all to Google Calendar<small>One repeating event · Tue, Thu, Fri until Dec 31</small></span>
         </a>
       </div>
-      <ol class="steps">
+      <div class="toast" id="appleNote" hidden>This Claude page can't pass files to the Calendar app. On your iPhone, open the <b>nepal-work-shifts.ics</b> file from the Claude chat and tap <b>Add All</b>, or use Google Calendar above and it will sync to your iPhone calendar.</div>
+      <ol class="steps" id="appleSteps">
         <li>On iPhone, tap <b>Add to Apple Calendar</b>.</li>
         <li>When the shifts appear, tap <b>Add All</b>.</li>
         <li>Pick a calendar and tap <b>Done</b>.</li>
@@ -441,6 +442,12 @@
     startdt: s.start.toISOString(), enddt: s.end.toISOString()
   }).toString();
   document.getElementById("gcalAll").href = gcal(shifts[0], true);
+
+  // The Claude viewer cannot serve or download .ics files; explain instead of failing silently.
+  const inViewer = () => !!(window.claude && typeof window.claude.use === "function");
+  const viewerMode = () => { document.getElementById("appleNote").hidden = false; document.getElementById("appleSteps").hidden = true; };
+  document.getElementById("appleBtn").addEventListener("click", e => { if (inViewer()) { e.preventDefault(); viewerMode(); } });
+  setTimeout(() => { if (inViewer()) viewerMode(); }, 1500);
 
   // Month-at-a-glance grids (dates are Nepal dates)
   const cells = {};
