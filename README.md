@@ -31,5 +31,14 @@ Save the file and reload the page.
 | `app.js` | Search, filters and rendering |
 | `menu-data.js` | All menu items and prices |
 
-## Publishing with GitHub Pages
-In the repo, go to Settings → Pages, set Source to "Deploy from a branch", pick the branch and `/ (root)`, then save. Make a QR code from the URL you get and print it for the tables.
+## Going live (GitHub Pages)
+1. The repository is private. GitHub Pages on a free account needs a **public** repo: Settings → General → Danger Zone → Change visibility → Public.
+2. Settings → Pages → Source "Deploy from a branch" → Branch `Gautam-Hotel-Menu`, folder `/ (root)` → Save.
+3. After about a minute the menu is live at **https://neupaneprashant.github.io/Usa-time-to-Nepal/**
+
+## QR code
+`qr/` holds the QR code that points to the address above:
+- `menu-qr.png` / `menu-qr.svg`: the QR code alone
+- `table-card.pdf` / `table-card.png`: a branded A6 table card, ready to print
+
+If the menu is hosted at a different address, regenerate the QR code with `python3 qr/make_qr.py https://your-new-address/`.
