@@ -1,1 +1,36 @@
-# Usa-time-to-Nepal
+# Gautam Hotel: Digital Menu
+
+The digital menu for **Gautam Hotel, Bardibas-14, Mahottari** (serving since 2002 A.D.), made from the printed menu card.
+
+It's a static website with no build step or server code. Open `index.html` in a browser or host the folder anywhere (GitHub Pages, Netlify, any web host).
+
+## Features
+- Every category and price from the printed menu, with a matching food photo for each category
+- Search box (try "momo", "paneer", "latte")
+- Veg / Non-veg filter, using the standard green and red diet marks
+- Food / Drinks tabs and a sticky category bar that follows your scroll
+- A "Chef's picks" strip, a one-tap call button and contact details
+- Built for phones first, so guests can scan a QR code at the table
+
+## Updating prices or dishes
+Everything lives in **`menu-data.js`**. Each dish is one line:
+
+```js
+["Chicken Thukpa", 205, "n"],        // name, price, diet (v = veg, n = non-veg, b = both)
+["Special Veg Rice Set", 620, "v", "Rice, dal fry, ..."],  // optional description
+["Veg Sizzler", null, "v"],          // null shows "Ask staff"
+```
+
+Save the file and reload the page.
+
+## Files
+| File | Purpose |
+| --- | --- |
+| `index.html` | Page layout |
+| `styles.css` | Design |
+| `app.js` | Search, filters and rendering |
+| `menu-data.js` | All menu items and prices |
+| `images/` | Food photos |
+
+## Publishing with GitHub Pages
+In the repo, go to Settings → Pages, set Source to "Deploy from a branch", pick the branch and `/ (root)`, then save. Make a QR code from the URL you get and print it for the tables.
