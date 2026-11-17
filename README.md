@@ -30,7 +30,6 @@ Save the file and reload the page.
 | `styles.css` | Design |
 | `app.js` | Search, filters and rendering |
 | `menu-data.js` | All menu items and prices |
-| `images/` | Photos used in the page header |
 
 ## Publishing with GitHub Pages
 In the repo, go to Settings → Pages, set Source to "Deploy from a branch", pick the branch and `/ (root)`, then save. Make a QR code from the URL you get and print it for the tables.

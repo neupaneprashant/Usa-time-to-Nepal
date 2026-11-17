@@ -39,7 +39,7 @@ button { font: inherit; cursor: pointer; }
     radial-gradient(1200px 500px at 85% -10%, rgba(233, 180, 76, .28), transparent 60%),
     radial-gradient(800px 400px at -10% 110%, rgba(34, 48, 107, .55), transparent 60%),
     linear-gradient(160deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-  padding: 56px 16px 120px;
+  padding: 64px 16px 72px;
   text-align: center;
 }
 .hero::before {
@@ -82,16 +82,6 @@ button { font: inherit; cursor: pointer; }
 .btn-ghost { border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
 .btn-ghost:hover { background: rgba(255,255,255,.12); }
 
-.hero-plates {
-  position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%);
-  display: flex; gap: 14px;
-}
-.hero-plates img {
-  width: 92px; height: 92px; object-fit: cover; border-radius: 50%;
-  border: 4px solid rgba(255,255,255,.9);
-  box-shadow: 0 10px 24px rgba(0,0,0,.35);
-}
-.hero-plates img:nth-child(odd) { transform: translateY(-14px); }
 
 /* ───────── Toolbar ───────── */
 .toolbar {
@@ -160,7 +150,7 @@ button { font: inherit; cursor: pointer; }
 .dot.b::after { background: linear-gradient(90deg, var(--veg) 50%, var(--nonveg) 50%); }
 
 /* ───────── Main ───────── */
-main { max-width: 1120px; margin: 0 auto; padding: 72px 16px 40px; }
+main { max-width: 1120px; margin: 0 auto; padding: 16px 16px 40px; }
 
 .group-title {
   font-family: "Playfair Display", Georgia, serif;
@@ -263,9 +253,7 @@ mark { background: #ffe7a3; color: inherit; border-radius: 3px; padding: 0 1px; 
   .footer-inner { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
-  .hero { padding-top: 40px; padding-bottom: 100px; }
-  .hero-plates img { width: 70px; height: 70px; border-width: 3px; }
-  .hero-plates { gap: 10px; bottom: -36px; }
+  .hero { padding-top: 44px; padding-bottom: 56px; }
   .tab { padding: 6px 11px; font-size: .85rem; }
   .chip { padding: 6px 10px; font-size: .82rem; }
   .call-fab { width: 48px; height: 48px; }
@@ -279,6 +267,6 @@ mark { background: #ffe7a3; color: inherit; border-radius: 3px; padding: 0 1px; 
   .section { animation: none; }
 }
 @media print {
-  .toolbar, .call-fab, .to-top, .hero-plates { display: none !important; }
+  .toolbar, .call-fab, .to-top { display: none !important; }
   .section { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
 }
