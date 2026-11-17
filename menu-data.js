@@ -13,7 +13,7 @@
 window.MENU = [
   /* ───────────── BREAKFAST & LIGHT ───────────── */
   {
-    id: "breakfast", group: "food", title: "Breakfast", img: "images/breakfast.jpg",
+    id: "breakfast", group: "food", title: "Breakfast",
     tagline: "Start the day right",
     items: [
       ["Bread Toast", 95, "v"],
@@ -30,7 +30,7 @@ window.MENU = [
     ]
   },
   {
-    id: "soup", group: "food", title: "Soup", img: "images/soup.jpg",
+    id: "soup", group: "food", title: "Soup",
     tagline: "Warm bowls, veg / non-veg",
     items: [
       ["Clear Soup (Veg / Non-Veg)", "220 / 280", "b"],
@@ -48,8 +48,8 @@ window.MENU = [
 
   /* ───────────── NEPALI ───────────── */
   {
-    id: "nepali-thali", group: "food", title: "Nepali Lunch & Dinner", img: "images/dalbhat.jpg",
-    tagline: "Traditional dal bhat sets", featured: true,
+    id: "nepali-thali", group: "food", title: "Nepali Lunch & Dinner",
+    tagline: "Traditional dal bhat sets",
     items: [
       ["Veg Rice Set", 310, "v"],
       ["Local Chicken Rice Set", 560, "n"],
@@ -63,8 +63,8 @@ window.MENU = [
     ]
   },
   {
-    id: "momo", group: "food", title: "Momo", img: "images/momo.jpg",
-    tagline: "Nepal's favourite dumplings", featured: true,
+    id: "momo", group: "food", title: "Momo",
+    tagline: "Nepal's favourite dumplings",
     cols: ["Steam", "Fried / Kothey", "Chilli"],
     items: [
       ["Chicken", [205, 210, 275], "n"],
@@ -77,15 +77,15 @@ window.MENU = [
     ]
   },
   {
-    id: "chef-momo", group: "food", title: "Chef's Special Momo", img: null,
-    tagline: "From the tandoor", featured: true,
+    id: "chef-momo", group: "food", title: "Chef's Special Momo",
+    tagline: "From the tandoor",
     items: [
       ["Veg Tandoori / Afghani Momo", 375, "v"],
       ["Chicken Tandoori / Afghani Momo", 435, "n"]
     ]
   },
   {
-    id: "thukpa", group: "food", title: "Thukpa", img: "images/thukpa.jpg",
+    id: "thukpa", group: "food", title: "Thukpa",
     tagline: "Himalayan noodle soup",
     items: [
       ["Veg Thukpa", 150, "v"],
@@ -96,8 +96,8 @@ window.MENU = [
     ]
   },
   {
-    id: "nonveg-snacks", group: "food", title: "Non-Veg Snacks", img: "images/sekuwa.jpg",
-    tagline: "Sekuwa, choila, tas & more", featured: true,
+    id: "nonveg-snacks", group: "food", title: "Non-Veg Snacks",
+    tagline: "Sekuwa, choila, tas & more",
     items: [
       ["Mutton Boiled", 620, "n"],
       ["Chicken Boiled", 435, "n"],
@@ -128,7 +128,7 @@ window.MENU = [
     ]
   },
   {
-    id: "veg-snacks", group: "food", title: "Vegetable Snacks", img: "images/fries.jpg",
+    id: "veg-snacks", group: "food", title: "Vegetable Snacks",
     tagline: "Pakauda, sadeko & salads",
     items: [
       ["French Fries", 280, "v"],
@@ -155,8 +155,8 @@ window.MENU = [
     ]
   },
   {
-    id: "gautam-special", group: "food", title: "Gautam Special Snacks (Veg)", img: "images/chilli-potato.jpg",
-    tagline: "House favourites", featured: true,
+    id: "gautam-special", group: "food", title: "Gautam Special Snacks (Veg)",
+    tagline: "House favourites",
     items: [
       ["Honey Chilli Potato", 280, "v"],
       ["Chilli Potato", 220, "v"],
@@ -169,7 +169,7 @@ window.MENU = [
     ]
   },
   {
-    id: "platter", group: "food", title: "Chef's Special Platter", img: "images/platter.jpg",
+    id: "platter", group: "food", title: "Chef's Special Platter",
     tagline: "Perfect for sharing",
     items: [
       ["Non-Veg Platter", 995, "n", "Leg piece fry, sausage fry, kothey momo, poached egg, chicken salad, prawn chips"],
@@ -179,7 +179,7 @@ window.MENU = [
 
   /* ───────────── CHINESE ───────────── */
   {
-    id: "nonveg-chinese", group: "food", title: "Non-Veg (Chinese Starters)", img: "images/spring-roll.jpg",
+    id: "nonveg-chinese", group: "food", title: "Non-Veg (Chinese Starters)",
     tagline: "Indo-Chinese favourites",
     items: [
       ["Dragon Chicken", 510, "n"],
@@ -197,7 +197,7 @@ window.MENU = [
     ]
   },
   {
-    id: "rice-noodles", group: "food", title: "Rice / Noodles", img: "images/chowmein.jpg",
+    id: "rice-noodles", group: "food", title: "Rice / Noodles",
     tagline: "Chowmein, fried rice & more",
     cols: ["Veg", "Chicken", "Mix"],
     items: [
@@ -213,7 +213,7 @@ window.MENU = [
     ]
   },
   {
-    id: "chinese-veg-gravy", group: "food", title: "Chinese Veg Gravy", img: "images/manchurian.jpg",
+    id: "chinese-veg-gravy", group: "food", title: "Chinese Veg Gravy",
     tagline: "Saucy & spicy",
     items: [
       ["Veg Manchurian Gravy", 340, "v"],
@@ -223,7 +223,7 @@ window.MENU = [
     ]
   },
   {
-    id: "chinese-nonveg-gravy", group: "food", title: "Non-Veg Gravy (Chinese)", img: "images/chicken-gravy-chinese.jpg",
+    id: "chinese-nonveg-gravy", group: "food", title: "Non-Veg Gravy (Chinese)",
     tagline: "Wok-tossed in rich sauces",
     items: [
       ["Chicken Manchurian Gravy", 560, "n"],
@@ -235,7 +235,7 @@ window.MENU = [
     ]
   },
   {
-    id: "chop-suey", group: "food", title: "Chop Suey", img: "images/chopsuey.jpg",
+    id: "chop-suey", group: "food", title: "Chop Suey",
     tagline: "Chicken / mutton / mix non-veg",
     items: [
       ["American Chop Suey (Chicken / Mutton / Mix)", null, "n"],
@@ -245,7 +245,7 @@ window.MENU = [
 
   /* ───────────── INDIAN ───────────── */
   {
-    id: "tandoori-veg", group: "food", title: "Tandoori Snacks (Veg)", img: "images/paneer-tikka.jpg",
+    id: "tandoori-veg", group: "food", title: "Tandoori Snacks (Veg)",
     tagline: "Fresh from the clay oven",
     items: [
       ["Veg Seekh Kabab", 340, "v"],
@@ -259,8 +259,8 @@ window.MENU = [
     ]
   },
   {
-    id: "tandoori-nonveg", group: "food", title: "Tandoori Snacks (Non-Veg)", img: "images/tandoori.jpg",
-    tagline: "Smoky, char-grilled classics", featured: true,
+    id: "tandoori-nonveg", group: "food", title: "Tandoori Snacks (Non-Veg)",
+    tagline: "Smoky, char-grilled classics",
     items: [
       ["Chicken Tikka", 465, "n"],
       ["Chicken Hariyali Tikka", 500, "n"],
@@ -276,7 +276,7 @@ window.MENU = [
     ]
   },
   {
-    id: "indian-nonveg", group: "food", title: "Indian (Non-Veg Curries)", img: "images/butter-chicken.jpg",
+    id: "indian-nonveg", group: "food", title: "Indian (Non-Veg Curries)",
     tagline: "Rich gravies & curries",
     items: [
       ["Chicken Butter Masala", 500, "n"],
@@ -296,7 +296,7 @@ window.MENU = [
     ]
   },
   {
-    id: "veg-gravy-indian", group: "food", title: "Veg Gravy (Indian)", img: "images/paneer.jpg",
+    id: "veg-gravy-indian", group: "food", title: "Veg Gravy (Indian)",
     tagline: "Paneer, dal & seasonal veg",
     items: [
       ["Paneer Lababdar", 490, "v"],
@@ -317,8 +317,8 @@ window.MENU = [
     ]
   },
   {
-    id: "biryani", group: "food", title: "Pulau / Biryani", img: "images/biryani.jpg",
-    tagline: "Fragrant, slow-cooked rice", featured: true,
+    id: "biryani", group: "food", title: "Pulau / Biryani",
+    tagline: "Fragrant, slow-cooked rice",
     items: [
       ["Vegetable", 340, "v"],
       ["Broiler Chicken", 465, "n"],
@@ -331,7 +331,7 @@ window.MENU = [
     ]
   },
   {
-    id: "naan", group: "food", title: "Naan", img: "images/naan.jpg",
+    id: "naan", group: "food", title: "Naan",
     tagline: "Baked in the tandoor",
     items: [
       ["Plain Naan", 125, "v"],
@@ -344,7 +344,7 @@ window.MENU = [
     ]
   },
   {
-    id: "roti", group: "food", title: "Roti / Paratha", img: "images/paratha.jpg",
+    id: "roti", group: "food", title: "Roti / Paratha",
     tagline: "Fresh breads",
     items: [
       ["Missi Roti", 65, "v"],
@@ -359,7 +359,7 @@ window.MENU = [
     ]
   },
   {
-    id: "raita", group: "food", title: "Raita", img: "images/raita.jpg",
+    id: "raita", group: "food", title: "Raita",
     tagline: "Cool yoghurt sides",
     items: [
       ["Plain Dahi", 100, "v"],
@@ -372,7 +372,7 @@ window.MENU = [
 
   /* ───────────── CONTINENTAL / FAST FOOD ───────────── */
   {
-    id: "burger", group: "food", title: "Burger", img: "images/burger.jpg",
+    id: "burger", group: "food", title: "Burger",
     tagline: "Stacked & juicy",
     items: [
       ["Chicken Burger", 250, "n"],
@@ -381,8 +381,8 @@ window.MENU = [
     ]
   },
   {
-    id: "pizza", group: "food", title: "Pizza", img: "images/pizza.jpg",
-    tagline: "Hot from the oven", featured: true,
+    id: "pizza", group: "food", title: "Pizza",
+    tagline: "Hot from the oven",
     items: [
       ["Simply Veg", 335, "v"],
       ["Chicken / Sausage", 435, "n"],
@@ -394,7 +394,7 @@ window.MENU = [
     ]
   },
   {
-    id: "pasta", group: "food", title: "Pasta: Penne / Spaghetti", img: "images/pasta.jpg",
+    id: "pasta", group: "food", title: "Pasta: Penne / Spaghetti",
     tagline: "Choice of sauce",
     cols: ["Veg", "Chicken"],
     items: [
@@ -409,7 +409,7 @@ window.MENU = [
     ]
   },
   {
-    id: "sizzler", group: "food", title: "Sizzler", img: "images/sizzler.jpg",
+    id: "sizzler", group: "food", title: "Sizzler",
     tagline: "Served smoking hot",
     items: [
       ["Chicken Sizzler", 745, "n"],
@@ -419,7 +419,7 @@ window.MENU = [
     ]
   },
   {
-    id: "sandwich", group: "food", title: "Sandwich / Cutlet", img: "images/sandwich.jpg",
+    id: "sandwich", group: "food", title: "Sandwich / Cutlet",
     tagline: "Quick bites",
     items: [
       ["Vegetable Sandwich", 220, "v"],
@@ -431,7 +431,7 @@ window.MENU = [
     ]
   },
   {
-    id: "baby", group: "food", title: "Baby Menu", img: "images/khichdi.jpg",
+    id: "baby", group: "food", title: "Baby Menu",
     tagline: "Gentle meals for little ones",
     items: [
       ["Jaulo", 185, "v"],
@@ -444,7 +444,7 @@ window.MENU = [
 
   /* ───────────── DRINKS ───────────── */
   {
-    id: "hot-coffee", group: "drinks", title: "Hot Espresso Beverages", img: "images/coffee.jpg",
+    id: "hot-coffee", group: "drinks", title: "Hot Espresso Beverages",
     tagline: "Freshly pulled espresso",
     items: [
       ["Espresso", 125],
@@ -461,7 +461,7 @@ window.MENU = [
     ]
   },
   {
-    id: "iced-coffee", group: "drinks", title: "Iced / Blended Espresso", img: "images/iced-coffee.jpg",
+    id: "iced-coffee", group: "drinks", title: "Iced / Blended Espresso",
     tagline: "Chilled coffee",
     items: [
       ["Iced Americano", 150],
@@ -472,7 +472,7 @@ window.MENU = [
     ]
   },
   {
-    id: "tea", group: "drinks", title: "Tea, Lassi & Coffee Alternatives", img: "images/lassi.jpg",
+    id: "tea", group: "drinks", title: "Tea, Lassi & Coffee Alternatives",
     tagline: "Chiya, lassi & shakes",
     items: [
       ["Hot Chocolate", 190],
@@ -493,7 +493,7 @@ window.MENU = [
     ]
   },
   {
-    id: "juice", group: "drinks", title: "Fresh Seasonal Juice", img: "images/juice.jpg",
+    id: "juice", group: "drinks", title: "Fresh Seasonal Juice",
     tagline: "Pressed to order",
     items: [
       ["Apple Juice", 310],
@@ -505,7 +505,7 @@ window.MENU = [
     ]
   },
   {
-    id: "mocktail", group: "drinks", title: "Mocktail", img: "images/mocktail.jpg",
+    id: "mocktail", group: "drinks", title: "Mocktail",
     tagline: "Alcohol-free & fun",
     items: [
       ["Fruit Punch", 310],
@@ -514,7 +514,7 @@ window.MENU = [
     ]
   },
   {
-    id: "cold", group: "drinks", title: "Cold Beverages", img: "images/softdrink.jpg",
+    id: "cold", group: "drinks", title: "Cold Beverages",
     tagline: "Soft drinks, water & ice-cream",
     items: [
       ["Coke / Fanta / Sprite / Slice", null],
@@ -531,7 +531,7 @@ window.MENU = [
     ]
   },
   {
-    id: "beer", group: "drinks", title: "Beer", img: "images/beer.jpg",
+    id: "beer", group: "drinks", title: "Beer",
     tagline: "Chilled & ready",
     items: [
       ["Tuborg", 745],
@@ -545,7 +545,7 @@ window.MENU = [
     ]
   },
   {
-    id: "tobacco", group: "drinks", title: "Tobacco", img: null,
+    id: "tobacco", group: "drinks", title: "Tobacco",
     tagline: "For adults (18+) only",
     items: [
       ["Surya Cigarette (Red / Light)", 50],

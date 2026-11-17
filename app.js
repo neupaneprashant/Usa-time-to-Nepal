@@ -47,10 +47,7 @@
 
   function sectionHTML(sec, items, extra) {
     var head = '<h3>' + esc(sec.title) + "</h3>" + (sec.tagline ? '<p class="sub">' + esc(sec.tagline) + "</p>" : "");
-    var top = sec.img
-      ? '<div class="section-top"><div class="section-media"><img src="' + esc(sec.img) + '" alt="' + esc(sec.title) +
-        '" loading="lazy" width="640" height="320"></div><div class="section-head on-img">' + head + "</div></div>"
-      : '<div class="section-head">' + head + "</div>";
+    var top = '<div class="section-head"><span class="ornament" aria-hidden="true">✦</span>' + head + "</div>";
 
     var body;
     if (sec.cols) {
@@ -92,7 +89,6 @@
     $("#sections").innerHTML = html;
     $("#cats").innerHTML = cats;
     $("#empty").hidden = count > 0;
-    $("#picks").hidden = !!(state.q || state.diet !== "all" || state.group === "drinks");
     spy();
   }
 
@@ -111,13 +107,6 @@
       });
     }, { rootMargin: "-35% 0px -60% 0px" });
     $$(".section").forEach(function (s) { observer.observe(s); });
-  }
-
-  function renderPicks() {
-    $("#picksTrack").innerHTML = MENU.filter(function (s) { return s.featured && s.img; }).map(function (s) {
-      return '<a class="pick" href="#' + esc(s.id) + '"><img src="' + esc(s.img) + '" alt="' + esc(s.title) +
-        '" loading="lazy"><span>' + esc(s.title) + "<small>" + esc(s.tagline || "") + "</small></span></a>";
-    }).join("");
   }
 
   // Controls
@@ -146,6 +135,5 @@
   window.addEventListener("scroll", function () { top.classList.toggle("show", window.scrollY > 900); }, { passive: true });
   top.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
 
-  renderPicks();
   render();
 })();
